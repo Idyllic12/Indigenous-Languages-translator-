@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Indigenous Language Translator</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Indigenous Language Translator</h1>
+    
+    <select id="source-lang">
+      <option value="bodo">Bodo</option>
+      <option value="koch">Koch</option>
+    </select>
+
+    <textarea id="source-text" rows="4" placeholder="Enter text here..."></textarea>
+
+    <select id="output-lang">
+      <option value="original">Original Script</option>
+      <option value="latin">Latin Script</option>
+    </select>
+
+    <button id="translate-btn">Translate</button>
+
+    <textarea id="translated-text" rows="4" readonly></textarea>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>
