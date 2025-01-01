@@ -3,7 +3,7 @@ function bodoTranslate(text, script) {
   console.log('Bodo Translator: Input:', text, 'Script:', script);
 
   const bodoDictionary = {
-    hello: { original: '𑑲𑑧𑒏', latin: 'jwlwi' },
+    good morning: { original: 'পেপেম মনপ', latin: 'pelem monop' },
     world: { original: '𑑛𑑨𑑒𑒌', latin: 'mwnthang' },
     love: { original: '𑑖𑑧𑑙𑑦', latin: 'brwi' },
     peace: { original: '𑑥𑑧𑑒𑑣𑑧𑑛', latin: 'swnsw' },
@@ -64,9 +64,6 @@ translateBtn.addEventListener('click', () => {
 
   try {
     switch (sourceLanguage) {
-      case 'ahom':
-        translation = ahomTranslate(text, targetScript);
-        break;
       case 'bodo':
         translation = bodoTranslate(text, targetScript);
         break;
@@ -76,6 +73,23 @@ translateBtn.addEventListener('click', () => {
       default:
         translation = 'Invalid language selection.';
     }
+ // Check for "My name is" pattern
+  if (sourceText.toLowerCase().startsWith("my name is")) {
+    const name = sourceText.slice(11).trim(); // Extract the name after "My name is"
+    
+    const template =
+      templates[sourceLang] && templates[sourceLang][outputLang];
+    
+    if (template) {
+      const translatedText = template.replace("{name}", name); // Replace placeholder with the name
+      document.getElementById("translated-text").value = translatedText;
+    } else {
+      document.getElementById("translated-text").value = "Translation not available.";
+    }
+  } else {
+    document.getElementById("translated-text").value =
+      "Please enter text in the format: 'My name is [Your Name]'.";
+  }
   } catch (error) {
     console.error('Translation Error:', error);
     translation = 'Error in translation. Check console for details.';
